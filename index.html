@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KeanuWongves</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #070a0f;
+        --panel: #0d1117;
+        --panel-2: #1f2335;
+        --fg: #e6edf3;
+        --muted: #9aa5ce;
+        --line: #30384f;
+        --code: #7ee787;
+        --cyan: #7dcfff;
+        --red: #ff7b72;
+        --yellow: #f2cc60;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(46, 160, 67, 0.16), transparent 32rem),
+          linear-gradient(180deg, #090d13 0%, var(--bg) 55%);
+        color: var(--fg);
+        font: 16px/1.6 "Fira Code", "MesloLGS NF", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 56px 22px 72px;
+      }
+
+      .hero {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 6vw, 3.6rem);
+        line-height: 1.05;
+        font-weight: 720;
+        letter-spacing: 0;
+      }
+
+      .motto {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 1.15rem;
+      }
+
+      .tagline {
+        margin: 0 auto;
+        width: fit-content;
+        max-width: 100%;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(13, 17, 23, 0.78);
+        color: var(--code);
+        font: 0.95rem "Fira Code", "MesloLGS NF", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        overflow-wrap: anywhere;
+      }
+
+      .terminal {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(13, 17, 23, 0.92);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      .chrome {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 38px;
+        padding: 0 14px;
+        border-bottom: 1px solid var(--line);
+        background: var(--panel-2);
+      }
+
+      .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+      }
+
+      .red { background: var(--red); }
+      .yellow { background: var(--yellow); }
+      .green { background: var(--code); }
+
+      .title {
+        margin-left: 8px;
+        color: var(--muted);
+        font: 0.78rem "Fira Code", "MesloLGS NF", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      pre {
+        margin: 0;
+        padding: 22px;
+        white-space: pre-wrap;
+        color: var(--fg);
+        font: 0.94rem/1.65 "Fira Code", "MesloLGS NF", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .prompt {
+        color: var(--code);
+      }
+
+      .blue {
+        color: var(--cyan);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      section {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(13, 17, 23, 0.72);
+        padding: 18px;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        color: var(--cyan);
+        font: 1rem "Fira Code", "MesloLGS NF", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1.25rem;
+      }
+
+      li {
+        margin: 7px 0;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      code {
+        padding: 0.2em 0.45em;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #1f2335;
+        color: var(--code);
+        font: 0.9em "Fira Code", "MesloLGS NF", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      .wide {
+        grid-column: 1 / -1;
+      }
+
+      .exit {
+        margin-top: 22px;
+      }
+
+      details {
+        margin-top: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(13, 17, 23, 0.72);
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 16px 18px;
+        color: var(--code);
+        font: 0.94rem "Fira Code", "MesloLGS NF", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      details pre {
+        border-top: 1px solid var(--line);
+      }
+
+      @media (max-width: 720px) {
+        main {
+          padding-top: 34px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        pre {
+          padding: 16px;
+          font-size: 0.86rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="hero">
+        <h1>KeanuWongves</h1>
+        <p class="motto">red pill or blue pill?</p>
+        <p class="tagline">code is cheap; show me the prompt.</p>
+      </div>
+
+      <!-- yes, the name is a quiet nod to The Matrix. -->
+
+      <div class="terminal">
+        <div class="chrome">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="title">keanu@matrix:~</span>
+        </div>
+        <pre><span class="prompt">keanu@matrix:~$</span> whoami
+<span class="blue">KeanuWongves</span>
+
+<span class="prompt">keanu@matrix:~$</span> cat ./identity
+Old-school fundamentals. AI-native workflow.
+Vibe coding is real; know-how still compounds.
+
+<span class="prompt">keanu@matrix:~$</span> ls -l ./signals
+e2e_perception.pth    # end-to-end perception, not just "vision"
+world_models.pt       # watching frontier architectures become real
+agentic_infra.sh      # AI-native workflows, not prompt-only magic
+cuda_profiler.cu      # performance matters below the framework
+vibe_coding.md        # new-school speed, old-school judgment
+hold_fast.txt         # Bosch, lifting, and staying the course</pre>
+      </div>
+
+      <div class="grid">
+        <section>
+          <h2>./runtime</h2>
+          <pre>mode     end-to-end autonomous driving
+status   vibe coding & migrating frameworks
+focus    GPU optimization, world models,
+         agentic infrastructures
+rule     Hold Fast.</pre>
+        </section>
+
+        <section>
+          <h2>./stack</h2>
+          <div class="chips">
+            <code>Codex</code>
+            <code>Gemini</code>
+            <code>PyTorch</code>
+            <code>Computer Vision</code>
+            <code>Systems Architecture</code>
+          </div>
+        </section>
+
+        <section class="wide">
+          <h2>./now</h2>
+          <ul>
+            <li>bridging the gap between legacy deep learning and AI-native workflows</li>
+            <li>optimizing distributed training systems</li>
+            <li>systematically learning agentic software development</li>
+            <li>Eat Drink Sleep Gym</li>
+          </ul>
+        </section>
+
+        <section class="wide">
+          <h2>./incoming</h2>
+          <ul>
+            <li>autonomous dev tools &amp; CI/CD patterns</li>
+            <li>e2e perception scaling experiments</li>
+            <li>open-sourcing the good parts</li>
+            <li>hold fast</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="terminal exit">
+        <pre><span class="prompt">keanu@matrix:~$</span> exit
+wake up, then build.</pre>
+      </div>
+
+      <details>
+        <summary><code>keanu@matrix:~$ ls -a</code></summary>
+        <pre>.  ..  .config  .ssh  .mindset
+
+<span class="prompt">keanu@matrix:~$</span> cat .mindset
+Hold Fast.
+Train heavy. Build smart.</pre>
+      </details>
+
+      <!-- raw mode unlocked: there is no spoon, only fundamentals. -->
+    </main>
+  </body>
+</html>
